@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Broadcast Chat</title>
+  <style>
+    /* Basic CSS for page layout and styling */
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    #messages { 
+      border: 1px solid #ccc; 
+      padding: 10px; 
+      height: 300px; 
+      overflow-y: scroll; 
+      margin-bottom: 10px; 
+    }
+    input { width: 70%; padding: 8px; }
+    button { padding: 8px 16px; }
+  </style>
+</head>
+<body>
+  <!-- Application title -->
+  <h2>Socket.IO Broadcast Demo</h2>
+
+  <!-- Chat messages will appear here -->
+  <div id="messages"></div>
+
+  <!-- Input field for typing new messages -->
+  <input id="messageInput" placeholder="Type your message..." />
+
+  <!-- Button to send message -->
+  <button id="sendBtn">Send</button>
+
+  <!-- Socket.IO client-side library automatically served by the server -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- Link to the client-side JS logic -->
+  <script src="client.js"></script>
+</body>
+</html>

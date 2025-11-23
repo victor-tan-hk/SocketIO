@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Namespace + Room + Username Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    #messages {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+      background-color: #fafafa;
+    }
+    input, select, button { padding: 8px; margin: 5px 0; }
+    #chatUI, #roomUI { display: none; }
+    #userCount { font-weight: bold; color: darkgreen; }
+    #roomCount { font-weight: bold; color: darkblue; }
+    #connectionInfo { font-style: italic; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Socket.IO Namespaces + Rooms + Username Demo</h2>
+
+  <!-- Step 1: Choose Namespace and Username -->
+  <div id="connectUI">
+    <p><strong>Step 1: Select a namespace and enter your username</strong></p>
+    <label>Namespace:</label>
+    <select id="namespaceSelect">
+      <option value="/general">General</option>
+      <option value="/sports">Sports</option>
+      <option value="/movies">Movies</option>
+    </select>
+    <br>
+    <label>Username:</label>
+    <input id="usernameInput" placeholder="Enter your username" />
+    <br>
+    <button id="connectBtn">Connect</button>
+  </div>
+
+  <!-- Step 2: Choose a Room -->
+  <div id="roomUI">
+    <h3 id="chatTitle"></h3>
+    <p id="userCount">Users in namespace: 0</p>
+
+    <label>Room:</label>
+    <select id="roomSelect">
+      <option value="RoomA">Room A</option>
+      <option value="RoomB">Room B</option>
+      <option value="RoomC">Room C</option>
+    </select>
+    <button id="joinRoomBtn">Join Room</button>
+  </div>
+
+  <!-- Step 3: Chat Interface -->
+  <div id="chatUI">
+    <h4 id="roomTitle"></h4>
+    <p id="connectionInfo">Not connected yet.</p>
+    <p id="roomCount">Users in room: 0</p>
+
+    <div id="messages"></div>
+
+    <input id="messageInput" placeholder="Type your message..." />
+    <button id="sendBtn">Send</button>
+    <br />
+    <button id="disconnectBtn">Disconnect</button>
+  </div>
+
+  <!-- Socket.IO client library -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Client logic -->
+  <script src="client.js"></script>
+</body>
+</html>

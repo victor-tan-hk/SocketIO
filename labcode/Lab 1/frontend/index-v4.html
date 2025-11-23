@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Manipulation Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+    }
+
+    #demo-area {
+      border: 2px dashed #888;
+      padding: 20px;
+      margin-top: 20px;
+      min-height: 100px;
+    }
+
+    button {
+      margin-right: 10px;
+      margin-top: 10px;
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript DOM Manipulation Demo</h1>
+  <p>This page demonstrates <b>createElement()</b>, <b>appendChild()</b>, <b>textContent</b>, and <b>innerHTML</b>.</p>
+
+  <!-- Buttons that trigger each demonstration -->
+  <button id="btnCreate">Create Element</button>
+  <button id="btnAppend">Append Child</button>
+  <button id="btnTextContent">Use textContent</button>
+  <button id="btnInnerHTML">Use innerHTML</button>
+
+  <!-- This section acts as a container where elements will be created and modified -->
+  <div id="demo-area">
+    <p id="sample-paragraph">This is a sample paragraph inside the demo area.</p>
+  </div>
+
+  <!-- External JavaScript file -->
+  <script src="client.js"></script>
+</body>
+</html>

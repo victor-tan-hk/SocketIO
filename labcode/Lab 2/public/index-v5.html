@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Namespaces + Rooms Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    #messages {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 300px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+    }
+    input, select, button { padding: 8px; margin: 5px 0; }
+    #chatUI, #roomUI { display: none; }
+    #userCount { font-weight: bold; color: darkgreen; }
+  </style>
+</head>
+<body>
+  <h2>Socket.IO Namespaces + Rooms Demo</h2>
+
+  <!-- Step 1: Namespace selection -->
+  <div id="connectUI">
+    <label><strong>Select a Namespace:</strong></label>
+    <select id="namespaceSelect">
+      <option value="/general">General</option>
+      <option value="/sports">Sports</option>
+      <option value="/movies">Movies</option>
+    </select>
+    <button id="connectBtn">Connect</button>
+  </div>
+
+  <!-- Step 2: Room selection (appears after namespace connection) -->
+  <div id="roomUI">
+    <h3 id="chatTitle"></h3>
+    <p id="userCount">Users online in namespace: 0</p>
+
+    <label><strong>Select a Room:</strong></label>
+    <select id="roomSelect">
+      <option value="RoomA">Room A</option>
+      <option value="RoomB">Room B</option>
+      <option value="RoomC">Room C</option>
+    </select>
+    <button id="joinRoomBtn">Join Room</button>
+  </div>
+
+  <!-- Step 3: Chat interface (visible once room joined) -->
+  <div id="chatUI">
+    <h4 id="roomTitle"></h4>
+    <p id="roomCount">Users in room: 0</p>
+
+    <div id="messages"></div>
+    <input id="messageInput" placeholder="Type message..." />
+    <button id="sendBtn">Send</button>
+    <br />
+    <button id="disconnectBtn">Disconnect</button>
+  </div>
+
+  <!-- Socket.IO client -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

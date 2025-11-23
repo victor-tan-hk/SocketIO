@@ -1,0 +1,136 @@
+<!--
+index.html
+--------------------------------------------
+Frontend visualization for the Real-Time
+Machine Metrics Simulator.
+
+New in this version:
+- The frontend connects to a custom Socket.IO
+  namespace: /machines
+- A UI selector lets the user choose which
+  Machine (A or B) to subscribe to.
+  Each Machine corresponds to a Socket.IO room:
+    - Machine A -> "machineA"
+    - Machine B -> "machineB"
+
+Visualization (same as before):
+- 4 numeric cards in a 2x2 grid:
+    RPM, Torque, Pressure, Timestamp
+- Timestamp displayed as separate Date and Time
+- 3 live trend charts (<canvas>) showing the
+  last 10 readings of:
+    - RPM
+    - Torque
+    - Pressure
+--------------------------------------------
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Machine Metrics Dashboard</title>
+
+  <!-- Link to the external CSS stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Socket.IO client library (served automatically by the backend) -->
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <h1>🏭 Machine Metrics Dashboard</h1>
+
+  <!--
+    Machine Selector
+    ----------------
+    Simple UI component that lets the user choose
+    between:
+      - Machine A (room "machineA")
+      - Machine B (room "machineB")
+
+    The selection determines which Socket.IO room
+    the client joins within the /machines namespace.
+  -->
+  <div class="machine-selector">
+    <label for="machine-select">Select Machine:</label>
+    <select id="machine-select">
+      <!--
+        The "value" attributes correspond exactly to
+        the room names used on the backend.
+      -->
+      <option value="machineA" selected>Machine A</option>
+      <option value="machineB">Machine B</option>
+    </select>
+    <span id="current-machine-label">Currently viewing: Machine A</span>
+  </div>
+
+  <!--
+    Dashboard Container
+    -------------------
+    Displays the latest numeric values of:
+    - RPM
+    - Torque
+    - Pressure
+    - Timestamp (Date + Time)
+  -->
+  <div class="dashboard">
+    <div class="card" id="rpm-card">
+      <h2>RPM</h2>
+      <p id="rpm-value">--</p>
+    </div>
+
+    <div class="card" id="torque-card">
+      <h2>Torque (Nm)</h2>
+      <p id="torque-value">--</p>
+    </div>
+
+    <div class="card" id="pressure-card">
+      <h2>Pressure (bar)</h2>
+      <p id="pressure-value">--</p>
+    </div>
+
+    <div class="card" id="timestamp-card">
+      <h2>Timestamp</h2>
+      <div class="timestamp-content">
+        <p id="timestamp-date">Date: --</p>
+        <p id="timestamp-time">Time: --</p>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    Live Trend Section
+    ------------------
+    Shows simple line charts for the last 10 readings
+    of:
+      - RPM
+      - Torque
+      - Pressure
+
+    Implemented using <canvas> and vanilla JS.
+  -->
+  <section class="trend-section">
+    <h2>Live Trends (Last 10 Readings)</h2>
+
+    <div class="trend-grid">
+      <div class="trend-card">
+        <h3>RPM Trend</h3>
+        <canvas id="rpm-chart" width="260" height="140"></canvas>
+      </div>
+
+      <div class="trend-card">
+        <h3>Torque (Nm) Trend</h3>
+        <canvas id="torque-chart" width="260" height="140"></canvas>
+      </div>
+
+      <div class="trend-card">
+        <h3>Pressure (bar) Trend</h3>
+        <canvas id="pressure-chart" width="260" height="140"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client-side JavaScript logic -->
+  <script src="client.js"></script>
+</body>
+</html>

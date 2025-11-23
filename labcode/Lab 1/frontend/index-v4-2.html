@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Text Display Demo</title>
+
+    <!-- 
+        This HTML file demonstrates DOM interaction using vanilla JavaScript.
+        The functionality:
+        - A text field where the user can type.
+        - A paragraph below that live-displays whatever the user types.
+        - A "Clear Text" button to clear the input and the output.
+        - All logic is implemented in client.js.
+    -->
+
+</head>
+<body>
+
+    <h1>Live Text Display Demo</h1>
+
+    <!-- LABEL + TEXT INPUT FIELD -->
+    <label for="userInput">Enter some text:</label>
+    <input 
+        type="text" 
+        id="userInput"
+        placeholder="Type something here..."
+    >
+    <!-- 
+        The input field has an id="userInput" so that JavaScript
+        can easily select it using document.getElementById().
+    -->
+
+    <br><br>
+
+    <!-- PARAGRAPH WHERE TEXT WILL BE DISPLAYED DYNAMICALLY -->
+    <p id="displayArea"><em>Your text will appear here...</em></p>
+    <!-- 
+        The paragraph starts with placeholder text.
+        JavaScript will change its textContent whenever the user types.
+    -->
+
+    <br>
+
+    <!-- CLEAR BUTTON -->
+    <button id="clearBtn">Clear Text</button>
+    <!-- 
+        Clicking this button will trigger an event listener defined in client.js
+        that clears the input field and the displayed paragraph.
+    -->
+
+    <!-- Attach external JavaScript file -->
+    <script src="client.js"></script>
+
+</body>
+</html>

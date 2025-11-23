@@ -1,2 +1,2 @@
-# SocketIO-
-workshop on data streaming using SocketIO
+# Data Streaming using SocketIO
+Western Digital Nov 24 - 25

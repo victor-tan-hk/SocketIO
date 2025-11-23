@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Demo</title>
+
+  <!-- Embed the CSS style rules here -->
+  <style>
+    #log {
+      border: 1px solid #ccc;
+      padding: 10px;
+      height: 200px;
+      overflow-y: auto;
+    }
+  </style>
+
+</head>
+
+<body>
+  <h1>Socket.IO Demo</h1>
+
+  <div>
+    <label for="messageInput">Message to send:</label>
+    <input id="messageInput" type="text" />
+    <button id="sendBtn">Send</button>
+  </div>
+
+  <h2>Messages</h2>
+  <div id="log"></div>
+
+  <!-- Load Socket.IO client library from the server side -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- Load our client-side JS -->
+  <script src="client.js"></script>
+</body>
+
+</html>

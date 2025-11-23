@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Numbers Demo</title>
+
+    <!-- 
+        This HTML page demonstrates:
+        - Two numeric input fields
+        - A button to add the numbers
+        - Dynamic display of the sum
+        - A message showing whether the sum is < 0, = 0, or > 0
+        - Clearing of input fields after calculation
+    -->
+</head>
+<body>
+
+    <h1>Add Two Numbers</h1>
+
+    <!-- Label + Input Field #1 -->
+    <label for="num1">Enter first number:</label>
+    <input type="number" id="num1">
+    <br><br>
+
+    <!-- Label + Input Field #2 -->
+    <label for="num2">Enter second number:</label>
+    <input type="number" id="num2">
+    <br><br>
+
+    <!-- Button that triggers the addition when clicked -->
+    <button id="addBtn">Add numbers</button>
+
+    <br><br>
+
+    <!-- Paragraph where the sum will be displayed dynamically -->
+    <p id="result"></p>
+
+    <!-- Paragraph where the message (negative, zero, positive) will appear -->
+    <p id="message"></p>
+
+    <!-- Attach external JavaScript file -->
+    <script src="client.js"></script>
+
+</body>
+</html>

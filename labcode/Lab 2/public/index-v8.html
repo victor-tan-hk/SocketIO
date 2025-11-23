@@ -1,0 +1,115 @@
+<!--
+index.html
+--------------------------------------------
+Frontend visualization for the Real-Time
+Machine Metrics Simulator.
+
+Features:
+- 4 numeric cards in a 2x2 grid:
+    RPM, Torque, Pressure, Timestamp
+- Timestamp displayed as separate Date and Time
+  (YYYY-MM-DD and HH:MM:SS, no 'T' or 'Z')
+- 3 live trend charts (<canvas>) showing
+  the last 10 readings for:
+    - RPM
+    - Torque
+    - Pressure
+--------------------------------------------
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Machine Metrics Dashboard</title>
+
+  <!-- Link to the external CSS stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Socket.IO client library (served automatically by the backend) -->
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <h1>🏭 Machine Metrics Dashboard</h1>
+
+  <!--
+    Dashboard Container
+    -------------------
+    Displays the latest numeric values of:
+    - RPM
+    - Torque
+    - Pressure
+    - Timestamp (Date + Time)
+  -->
+  <div class="dashboard">
+    <div class="card" id="rpm-card">
+      <h2>RPM</h2>
+      <p id="rpm-value">--</p>
+    </div>
+
+    <div class="card" id="torque-card">
+      <h2>Torque (Nm)</h2>
+      <p id="torque-value">--</p>
+    </div>
+
+    <div class="card" id="pressure-card">
+      <h2>Pressure (bar)</h2>
+      <p id="pressure-value">--</p>
+    </div>
+
+    <div class="card" id="timestamp-card">
+      <h2>Timestamp</h2>
+      <!--
+        Timestamp is divided into two separate lines:
+        - Date portion (YYYY-MM-DD)
+        - Time portion (HH:MM:SS)
+        The original ISO format with 'T' and 'Z'
+        is not shown to the user.
+      -->
+      <div class="timestamp-content">
+        <p id="timestamp-date">Date: --</p>
+        <p id="timestamp-time">Time: --</p>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    Live Trend Section
+    ------------------
+    Displays three <canvas> charts for the last
+    10 readings of:
+      - RPM
+      - Torque
+      - Pressure
+    Each chart is drawn using plain JavaScript
+    without any charting library.
+  -->
+  <section class="trend-section">
+    <h2>Live Trends (Last 10 Readings)</h2>
+
+    <div class="trend-grid">
+      <!-- RPM Trend Chart -->
+      <div class="trend-card">
+        <h3>RPM Trend</h3>
+        <!-- width/height attributes set the actual drawing resolution -->
+        <canvas id="rpm-chart" width="260" height="140"></canvas>
+      </div>
+
+      <!-- Torque Trend Chart -->
+      <div class="trend-card">
+        <h3>Torque (Nm) Trend</h3>
+        <canvas id="torque-chart" width="260" height="140"></canvas>
+      </div>
+
+      <!-- Pressure Trend Chart -->
+      <div class="trend-card">
+        <h3>Pressure (bar) Trend</h3>
+        <canvas id="pressure-chart" width="260" height="140"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client-side JavaScript logic -->
+  <script src="client.js"></script>
+</body>
+</html>

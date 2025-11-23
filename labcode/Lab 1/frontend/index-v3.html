@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Element Selection Demo</title>
+</head>
+<body>
+  <h1>Demonstration of JavaScript Element Selection Methods</h1>
+
+  <!-- =========================================================
+       SECTION 1: Elements for selection using different methods
+       ========================================================= -->
+
+  <!-- getElementById() will target this single element -->
+  <p id="uniqueParagraph">This paragraph has an ID of "uniqueParagraph".</p>
+
+  <!-- getElementsByTagName() will target all <p> tags -->
+  <h2>Multiple paragraphs with the same tag &lt;p&gt;</h2>
+  <p>This is paragraph #1.</p>
+  <p>This is paragraph #2.</p>
+  <p>This is paragraph #3.</p>
+
+  <!-- getElementsByClassName() will target these elements with the same class -->
+  <h2>Elements with the same class "highlight"</h2>
+  <div class="highlight">This is a DIV with class "highlight".</div>
+  <p class="highlight">This is a paragraph with class "highlight".</p>
+  <span class="highlight">This is a span with class "highlight".</span>
+
+  <!-- =========================================================
+       SECTION 2: Buttons to trigger the selection functions
+       ========================================================= -->
+  <h2>Click the buttons below to test each selection method</h2>
+  <button id="btnById">Select by ID</button>
+  <button id="btnByTagName">Select by Tag Name</button>
+  <button id="btnByClassName">Select by Class Name</button>
+  <h2>Demo a simple alert</h2>
+  <button id="alertButton">Show alert message</button>
+ 
+
+
+
+  <!-- Attach the external JavaScript file -->
+  <script src="client.js"></script>
+</body>
+</html>
